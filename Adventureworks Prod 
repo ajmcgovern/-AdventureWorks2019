@@ -16234,3 +16234,12 @@ go
 
 
 
+
+
+
+ALTER TABLE [HumanResources].[Emp] DROP CONSTRAINT [DF_Employee_CurrentFlag]
+go
+
+ALTER TABLE [Production].[Product]
+ADD [DEMO]  char(18)  NULL
+go
