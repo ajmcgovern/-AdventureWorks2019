@@ -16234,3 +16234,41 @@ go
 
 
 
+
+
+
+ALTER TABLE [Sales].[SalesReason] DROP CONSTRAINT [DF_SalesReason_ModifiedDate]
+go
+
+ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]
+DROP CONSTRAINT [FK_SalesReason_SalesOrderHeade]
+go
+
+ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]
+DROP CONSTRAINT [PK_SalesOrderHeaderSalesReason]
+go
+
+ALTER TABLE [Sales].[SalesReason]
+DROP CONSTRAINT [PK_SalesReason_SalesReasonID]
+go
+
+ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]
+  DROP COLUMN [SalesReasonID]
+go
+
+DROP TABLE [Sales].[SalesReason]
+go
+
+ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]
+ADD CONSTRAINT [PK_SalesOrderHeaderSalesReason] PRIMARY KEY  CLUSTERED ([SalesOrderID] ASC)
+	WITH
+	(
+		PAD_INDEX = OFF,
+		IGNORE_DUP_KEY = OFF,
+		STATISTICS_NORECOMPUTE = OFF,
+		ALLOW_ROW_LOCKS = ON,
+		ALLOW_PAGE_LOCKS = ON,
+		DATA_COMPRESSION = NONE
+	)
+	 ON "PRIMARY"
+go
